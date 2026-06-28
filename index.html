@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Couleurs - Test micro</title>
+  <title>Activité orale</title>
 
   <style>
     :root {
@@ -11,10 +11,10 @@
       --carte: #ffffff;
       --texte: #111827;
       --gris: #6b7280;
+      --bordure: #e5e7eb;
       --bleu: #2563eb;
       --vert: #16a34a;
       --rouge: #dc2626;
-      --bordure: #e5e7eb;
     }
 
     * {
@@ -35,7 +35,7 @@
 
     .app {
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
       background: var(--carte);
       border-radius: 28px;
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
@@ -43,22 +43,21 @@
     }
 
     h1 {
+      margin-top: 0;
       text-align: center;
-      margin: 0 0 10px;
-      font-size: 2rem;
     }
 
     .intro {
       text-align: center;
       color: var(--gris);
       line-height: 1.5;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    .infos {
+    .badges {
       display: flex;
-      gap: 12px;
       justify-content: center;
+      gap: 12px;
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
@@ -73,45 +72,38 @@
 
     .zone {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr 1.1fr;
       gap: 24px;
       align-items: stretch;
     }
 
-    .bloc-couleur {
-      min-height: 330px;
+    .image-zone {
+      min-height: 340px;
       background: #f9fafb;
       border: 1px solid var(--bordure);
       border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 18px;
+      overflow: hidden;
     }
 
-    .carre {
-      width: 230px;
-      height: 230px;
-      border-radius: 30px;
-      border: 4px solid rgba(0, 0, 0, 0.15);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .image-zone img {
+      max-width: 100%;
+      max-height: 310px;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .placeholder {
+      font-size: 5rem;
+      color: #cbd5e1;
       font-weight: bold;
-      color: white;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
 
-    .carre.white {
-      color: #111827;
-      text-shadow: none;
-      border-color: #cbd5e1;
-    }
-
-    .panneau {
-      min-height: 330px;
+    .panel {
+      min-height: 340px;
       background: #f9fafb;
       border: 1px solid var(--bordure);
       border-radius: 24px;
@@ -150,8 +142,8 @@
     .boutons {
       display: flex;
       gap: 12px;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     button {
@@ -168,70 +160,93 @@
       cursor: not-allowed;
     }
 
-    .demarrer {
+    .btn-vert {
       background: var(--vert);
       color: white;
     }
 
-    .parler {
+    .btn-bleu {
       background: var(--bleu);
       color: white;
     }
 
-    .stop {
+    .btn-rouge {
       background: var(--rouge);
       color: white;
     }
 
-    .reset {
+    .btn-gris {
       background: #e5e7eb;
       color: #111827;
     }
 
     .message {
-      text-align: center;
-      font-weight: bold;
-      color: var(--gris);
-      min-height: 24px;
-    }
-
-    .alerte {
       margin-top: 18px;
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      color: #9a3412;
       padding: 14px;
       border-radius: 16px;
-      display: none;
-      line-height: 1.45;
-    }
-
-    .final {
-      margin-top: 18px;
       background: #eff6ff;
       border: 1px solid #bfdbfe;
       color: #1e3a8a;
+      line-height: 1.45;
+      display: none;
+    }
+
+    .erreur {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #991b1b;
+    }
+
+    .final {
+      display: none;
+      margin-top: 18px;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #14532d;
       padding: 18px;
       border-radius: 20px;
       text-align: center;
       font-size: 1.2rem;
       font-weight: bold;
-      display: none;
     }
 
-    @media (max-width: 760px) {
+    .student-code {
+      display: none;
+      max-width: 360px;
+      margin: 0 auto 18px;
+    }
+
+    .student-code label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .student-code input {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 12px;
+      }
+
+      .app {
+        padding: 18px;
+      }
+
       .zone {
         grid-template-columns: 1fr;
       }
 
-      .bloc-couleur,
-      .panneau {
+      .image-zone,
+      .panel {
         min-height: auto;
-      }
-
-      .carre {
-        width: 180px;
-        height: 180px;
       }
     }
   </style>
@@ -239,367 +254,441 @@
 
 <body>
   <main class="app">
-    <h1>🎙️ Couleurs en anglais</h1>
+    <h1 id="title">Activité orale</h1>
 
-    <p class="intro">
-      Écoute la couleur. Clique sur <strong>Parler</strong>, répète le mot, puis clique sur <strong>Stop</strong>.
-      Le micro s’arrête automatiquement après environ 10 secondes.
+    <p id="intro" class="intro">
+      Chargement de l’activité...
     </p>
 
-    <div class="infos">
-      <div class="badge" id="progression">Couleur : 0 / 10</div>
-      <div class="badge" id="score">Score : 0</div>
-      <div class="badge" id="micro">Micro : arrêté</div>
+    <div id="studentCodeBox" class="student-code">
+      <label for="studentCode">Code élève</label>
+      <input id="studentCode" type="text" placeholder="Exemple : A7K4" maxlength="12">
+    </div>
+
+    <div class="badges">
+      <div id="progressBadge" class="badge">Carte : 0 / 0</div>
+      <div id="scoreBadge" class="badge">Score : 0</div>
+      <div id="microBadge" class="badge">Micro : arrêté</div>
     </div>
 
     <section class="zone">
-      <div class="bloc-couleur">
-        <div id="carre" class="carre" style="background:#e5e7eb;">Prêt ?</div>
+      <div id="imageZone" class="image-zone">
+        <div class="placeholder">?</div>
       </div>
 
-      <div class="panneau">
-        <div id="bulleApp" class="bulle">
+      <div class="panel">
+        <div id="appBubble" class="bulle">
           <strong>Voix de la Web App</strong>
-          Clique sur “Démarrer”.
+          En attente.
         </div>
 
-        <div id="bulleEleve" class="bulle">
+        <div id="studentBubble" class="bulle">
           <strong>Voix de l’élève</strong>
           La reconnaissance vocale apparaîtra ici.
         </div>
 
-        <div id="bulleResultat" class="bulle">
+        <div id="resultBubble" class="bulle">
           <strong>Résultat</strong>
           En attente.
         </div>
 
         <div class="boutons">
-          <button id="btnDemarrer" class="demarrer" onclick="demarrer()">Démarrer</button>
-          <button id="btnParler" class="parler" onclick="parler()" disabled>🎙️ Parler</button>
-          <button id="btnStop" class="stop" onclick="stopper()" disabled>Stop</button>
-          <button class="reset" onclick="reset()">Reset</button>
+          <button id="startBtn" class="btn-vert" onclick="startActivity()" disabled>Démarrer</button>
+          <button id="speakBtn" class="btn-bleu" onclick="startListening()" disabled>🎙️ Parler</button>
+          <button id="stopBtn" class="btn-rouge" onclick="stopListening()" disabled>Stop</button>
+          <button class="btn-gris" onclick="resetActivity()">Reset</button>
         </div>
-
-        <div id="message" class="message"></div>
       </div>
     </section>
 
-    <div id="final" class="final"></div>
-    <div id="alerte" class="alerte"></div>
+    <div id="finalBox" class="final"></div>
+    <div id="message" class="message"></div>
   </main>
 
   <script>
-    const couleurs = [
-      { nom: "red", couleur: "#ef4444" },
-      { nom: "white", couleur: "#ffffff" },
-      { nom: "blue", couleur: "#2563eb" },
-      { nom: "green", couleur: "#22c55e" },
-      { nom: "yellow", couleur: "#facc15" },
-      { nom: "black", couleur: "#111827" },
-      { nom: "orange", couleur: "#f97316" },
-      { nom: "purple", couleur: "#9333ea" },
-      { nom: "pink", couleur: "#ec4899" },
-      { nom: "brown", couleur: "#92400e" }
-    ];
-
-    const variantesAcceptees = {
-      red: ["red", "read"],
-      white: ["white"],
-      blue: ["blue", "blew"],
-      green: ["green"],
-      yellow: ["yellow"],
-      black: ["black"],
-      orange: ["orange"],
-      purple: ["purple"],
-      pink: ["pink"],
-      brown: ["brown"]
-    };
+    const API_URL = "https://script.google.com/a/macros/clgstgab.fr/s/AKfycbyXe9CNrQrnzN2zo-_JRI2ctl1tmRdlwHz8AMb7LLvq9zZNTUEnRSoHfX_p-Sxe_DgB/exec";
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-    let reconnaissance = null;
+    let activity = null;
+    let cards = [];
+    let recognition = null;
+
     let index = -1;
-    let points = 0;
-    let enEcoute = false;
-    let dejaCorrige = false;
-    let dernierTexteReconnu = "";
-    let alternatives = [];
+    let score = 0;
+    let listening = false;
+    let alreadyChecked = false;
+    let transcripts = [];
     let timerStop = null;
-    let timerAffichage = null;
-    let secondes = 10;
+    let timerDisplay = null;
+    let remainingSeconds = 10;
+    let details = [];
 
-    const progression = document.getElementById("progression");
-    const score = document.getElementById("score");
-    const micro = document.getElementById("micro");
-    const carre = document.getElementById("carre");
-    const bulleApp = document.getElementById("bulleApp");
-    const bulleEleve = document.getElementById("bulleEleve");
-    const bulleResultat = document.getElementById("bulleResultat");
-    const message = document.getElementById("message");
-    const alerte = document.getElementById("alerte");
-    const final = document.getElementById("final");
+    const titleEl = document.getElementById("title");
+    const introEl = document.getElementById("intro");
+    const studentCodeBox = document.getElementById("studentCodeBox");
+    const studentCodeInput = document.getElementById("studentCode");
 
-    const btnDemarrer = document.getElementById("btnDemarrer");
-    const btnParler = document.getElementById("btnParler");
-    const btnStop = document.getElementById("btnStop");
+    const progressBadge = document.getElementById("progressBadge");
+    const scoreBadge = document.getElementById("scoreBadge");
+    const microBadge = document.getElementById("microBadge");
 
-    window.addEventListener("load", initialiser);
+    const imageZone = document.getElementById("imageZone");
+    const appBubble = document.getElementById("appBubble");
+    const studentBubble = document.getElementById("studentBubble");
+    const resultBubble = document.getElementById("resultBubble");
 
-    function initialiser() {
+    const startBtn = document.getElementById("startBtn");
+    const speakBtn = document.getElementById("speakBtn");
+    const stopBtn = document.getElementById("stopBtn");
+
+    const finalBox = document.getElementById("finalBox");
+    const messageBox = document.getElementById("message");
+
+    window.addEventListener("load", init);
+
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const activityId = params.get("activite");
+
+      if (API_URL.includes("COLLE_ICI")) {
+        showMessage("Le lecteur GitHub n’est pas encore configuré : il faut coller l’URL Apps Script dans API_URL.", true);
+        return;
+      }
+
+      if (!activityId) {
+        showMessage("Aucune activité indiquée dans le lien. Il manque le paramètre ?activite=CODE.", true);
+        return;
+      }
+
       if (!window.isSecureContext) {
-        afficherAlerte("Cette page doit être ouverte en HTTPS. Avec GitHub Pages, ce sera normalement le cas.");
+        showMessage("La page doit être ouverte en HTTPS pour utiliser le micro.", true);
         return;
       }
 
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        afficherAlerte("Le navigateur ne permet pas l’accès au micro. Essaie avec Chrome ou Edge.");
+        showMessage("Ce navigateur ne permet pas l’accès au micro. Essaie avec Chrome ou Edge.", true);
         return;
       }
 
       if (!SpeechRecognition) {
-        afficherAlerte("La reconnaissance vocale n’est pas disponible dans ce navigateur. Essaie avec Chrome ou Edge.");
+        showMessage("La reconnaissance vocale n’est pas disponible dans ce navigateur. Essaie avec Chrome ou Edge.", true);
         return;
       }
 
-      reconnaissance = new SpeechRecognition();
-      reconnaissance.lang = "en-GB";
-      reconnaissance.interimResults = true;
-      reconnaissance.continuous = false;
-      reconnaissance.maxAlternatives = 5;
+      try {
+        const data = await callApi({
+          action: "loadActivity",
+          id: activityId
+        });
 
-      reconnaissance.onstart = function () {
-        enEcoute = true;
-        dejaCorrige = false;
-        dernierTexteReconnu = "";
-        alternatives = [];
-        secondes = 10;
+        if (!data.ok) {
+          showMessage(data.error || "Impossible de charger l’activité.", true);
+          return;
+        }
 
-        btnParler.disabled = true;
-        btnStop.disabled = false;
+        activity = data.activity;
+        cards = data.cards || [];
 
-        micro.textContent = "Micro : 10 s";
-        message.textContent = "Micro activé : répète la couleur.";
-        bulleEleve.className = "bulle";
-        bulleEleve.innerHTML = "<strong>Voix de l’élève</strong>J’écoute...";
-        demarrerCompteARebours();
+        if (cards.length === 0) {
+          showMessage("Cette activité ne contient aucune carte.", true);
+          return;
+        }
+
+        setupRecognition();
+        renderActivityIntro();
+
+      } catch (err) {
+        showMessage("Erreur de chargement : " + (err.message || err), true);
+      }
+    }
+
+    function renderActivityIntro() {
+      titleEl.textContent = activity.title || "Activité orale";
+
+      const modeText = activity.mode === "evaluation" ? "Évaluation" : "Activité";
+
+      introEl.innerHTML =
+        "Écoute le mot, clique sur <strong>Parler</strong>, répète, puis clique sur <strong>Stop</strong>. " +
+        "Le micro s’arrête automatiquement après " + activity.duration + " secondes.<br>" +
+        "Mode : <strong>" + modeText + "</strong>";
+
+      if (activity.mode === "evaluation") {
+        studentCodeBox.style.display = "block";
+      }
+
+      progressBadge.textContent = "Carte : 0 / " + cards.length;
+      scoreBadge.textContent = "Score : 0";
+      microBadge.textContent = "Micro : arrêté";
+
+      startBtn.disabled = false;
+      showMessage("Activité chargée. Clique sur Démarrer.", false);
+    }
+
+    function setupRecognition() {
+      recognition = new SpeechRecognition();
+      recognition.lang = activity.language || "en-GB";
+      recognition.interimResults = true;
+      recognition.continuous = false;
+      recognition.maxAlternatives = 5;
+
+      recognition.onstart = () => {
+        listening = true;
+        alreadyChecked = false;
+        transcripts = [];
+        remainingSeconds = Number(activity.duration || 10);
+
+        speakBtn.disabled = true;
+        stopBtn.disabled = false;
+
+        microBadge.textContent = "Micro : " + remainingSeconds + " s";
+        studentBubble.className = "bulle";
+        studentBubble.innerHTML = "<strong>Voix de l’élève</strong>J’écoute...";
+
+        startCountdown();
       };
 
-      reconnaissance.onresult = function (event) {
-        alternatives = [];
+      recognition.onresult = event => {
+        transcripts = [];
 
         for (let i = 0; i < event.results.length; i++) {
-          const resultat = event.results[i];
+          const result = event.results[i];
 
-          for (let j = 0; j < resultat.length; j++) {
-            if (resultat[j].transcript) {
-              alternatives.push(resultat[j].transcript);
+          for (let j = 0; j < result.length; j++) {
+            if (result[j].transcript) {
+              transcripts.push(result[j].transcript);
             }
           }
         }
 
-        dernierTexteReconnu = alternatives[0] || "";
+        const visible = transcripts[0] || "…";
 
-        bulleEleve.innerHTML =
+        studentBubble.innerHTML =
           "<strong>Voix de l’élève</strong>J’ai compris : <strong>" +
-          protegerHtml(dernierTexteReconnu || "…") +
+          escapeHtml(visible) +
           "</strong>";
       };
 
-      reconnaissance.onerror = function (event) {
+      recognition.onerror = event => {
         if (event.error === "not-allowed") {
-          afficherAlerte(
-            "Le micro est bloqué. Clique sur le cadenas à gauche de l’adresse du site, puis autorise le micro. Recharge ensuite la page."
-          );
-          arreterTimers();
-          micro.textContent = "Micro : bloqué";
-          btnParler.disabled = false;
-          btnStop.disabled = true;
-          enEcoute = false;
+          showMessage("Le micro est bloqué. Autorise le micro dans le navigateur, puis recharge la page.", true);
+          stopTimers();
+          microBadge.textContent = "Micro : bloqué";
+          listening = false;
+          speakBtn.disabled = false;
+          stopBtn.disabled = true;
           return;
         }
 
         if (event.error === "no-speech") {
-          dernierTexteReconnu = "";
-          alternatives = [];
+          transcripts = [];
         }
-
-        message.textContent = "Reconnaissance terminée.";
       };
 
-      reconnaissance.onend = function () {
-        arreterTimers();
+      recognition.onend = () => {
+        stopTimers();
 
-        if (enEcoute && !dejaCorrige) {
-          enEcoute = false;
-          dejaCorrige = true;
-          corriger();
+        if (listening && !alreadyChecked) {
+          listening = false;
+          alreadyChecked = true;
+          checkAnswer();
         }
 
-        btnStop.disabled = true;
+        stopBtn.disabled = true;
       };
     }
 
-    function demarrer() {
-      if (!SpeechRecognition || !navigator.mediaDevices) {
-        afficherAlerte("Impossible de démarrer : micro ou reconnaissance vocale indisponible.");
-        return;
+    function startActivity() {
+      if (activity.mode === "evaluation") {
+        const code = studentCodeInput.value.trim();
+
+        if (!code) {
+          showMessage("En mode évaluation, écris ton code élève avant de commencer.", true);
+          return;
+        }
       }
 
       index = 0;
-      points = 0;
-      final.style.display = "none";
-      btnDemarrer.disabled = true;
+      score = 0;
+      details = [];
+      finalBox.style.display = "none";
+      startBtn.disabled = true;
+      scoreBadge.textContent = "Score : 0";
 
-      mettreAJourScore();
-      afficherCouleur();
+      showCurrentCard();
     }
 
-    function afficherCouleur() {
-      if (index >= couleurs.length) {
-        terminer();
+    function showCurrentCard() {
+      if (index >= cards.length) {
+        finishActivity();
         return;
       }
 
-      const couleur = couleurs[index];
+      const card = cards[index];
 
-      progression.textContent = "Couleur : " + (index + 1) + " / " + couleurs.length;
-      micro.textContent = "Micro : arrêté";
-      message.textContent = "Écoute la couleur, puis clique sur Parler.";
+      progressBadge.textContent = "Carte : " + (index + 1) + " / " + cards.length;
+      microBadge.textContent = "Micro : arrêté";
 
-      carre.style.background = couleur.couleur;
-      carre.textContent = "";
-      carre.classList.toggle("white", couleur.nom === "white");
-
-      bulleApp.className = "bulle";
-      bulleApp.innerHTML =
-        "<strong>Voix de la Web App</strong>Couleur prononcée : <strong>" +
-        couleur.nom +
-        "</strong>";
-
-      bulleEleve.className = "bulle";
-      bulleEleve.innerHTML = "<strong>Voix de l’élève</strong>En attente.";
-
-      bulleResultat.className = "bulle";
-      bulleResultat.innerHTML = "<strong>Résultat</strong>En attente.";
-
-      btnParler.disabled = true;
-      btnStop.disabled = true;
-
-      prononcer(couleur.nom);
-    }
-
-    function prononcer(mot) {
-      speechSynthesis.cancel();
-
-      const voix = new SpeechSynthesisUtterance(mot);
-      voix.lang = "en-GB";
-      voix.rate = 0.85;
-      voix.pitch = 1;
-
-      const voixDisponibles = speechSynthesis.getVoices();
-      const voixAnglaise =
-        voixDisponibles.find(v => v.lang === "en-GB") ||
-        voixDisponibles.find(v => v.lang && v.lang.startsWith("en"));
-
-      if (voixAnglaise) {
-        voix.voice = voixAnglaise;
+      if (card.imageUrl) {
+        imageZone.innerHTML = `<img src="${card.imageUrl}" alt="Image de l’activité">`;
+      } else {
+        imageZone.innerHTML = `<div class="placeholder">${escapeHtml(card.word.charAt(0).toUpperCase())}</div>`;
       }
 
-      voix.onend = function () {
-        btnParler.disabled = false;
-        message.textContent = "Clique sur Parler et répète la couleur.";
-      };
+      appBubble.className = "bulle";
+      appBubble.innerHTML =
+        "<strong>Voix de la Web App</strong>Mot prononcé : <strong>" +
+        escapeHtml(card.word) +
+        "</strong>";
 
-      voix.onerror = function () {
-        btnParler.disabled = false;
-        message.textContent = "Clique sur Parler et répète la couleur.";
-      };
+      studentBubble.className = "bulle";
+      studentBubble.innerHTML = "<strong>Voix de l’élève</strong>En attente.";
 
-      speechSynthesis.speak(voix);
+      resultBubble.className = "bulle";
+      resultBubble.innerHTML = "<strong>Résultat</strong>En attente.";
+
+      speakBtn.disabled = true;
+      stopBtn.disabled = true;
+
+      speakWord(card.word);
     }
 
-    async function parler() {
-      if (!reconnaissance) return;
+    function speakWord(word) {
+      speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = activity.language || "en-GB";
+      utterance.rate = 0.85;
+      utterance.pitch = 1;
+
+      const voices = speechSynthesis.getVoices();
+      const langBase = String(activity.language || "en").split("-")[0];
+
+      const chosenVoice =
+        voices.find(v => v.lang === activity.language) ||
+        voices.find(v => v.lang && v.lang.startsWith(langBase)) ||
+        null;
+
+      if (chosenVoice) {
+        utterance.voice = chosenVoice;
+      }
+
+      utterance.onend = () => {
+        speakBtn.disabled = false;
+        showMessage("Clique sur Parler et répète le mot.", false);
+      };
+
+      utterance.onerror = () => {
+        speakBtn.disabled = false;
+        showMessage("Clique sur Parler et répète le mot.", false);
+      };
+
+      speechSynthesis.speak(utterance);
+    }
+
+    async function startListening() {
+      if (!recognition) return;
 
       try {
         speechSynthesis.cancel();
 
-        const flux = await navigator.mediaDevices.getUserMedia({ audio: true });
-        flux.getTracks().forEach(track => track.stop());
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach(track => track.stop());
 
-        dernierTexteReconnu = "";
-        alternatives = [];
-        dejaCorrige = false;
-        enEcoute = true;
+        transcripts = [];
+        alreadyChecked = false;
+        listening = true;
 
-        reconnaissance.start();
+        recognition.start();
 
-        timerStop = setTimeout(function () {
-          stopper();
-        }, 10000);
+        timerStop = setTimeout(() => {
+          stopListening();
+        }, Number(activity.duration || 10) * 1000);
 
-      } catch (erreur) {
-        micro.textContent = "Micro : bloqué";
-        afficherAlerte(
-          "Le navigateur refuse le micro. Vérifie l’autorisation micro du site et l’autorisation micro de Windows pour Chrome ou Edge."
-        );
+      } catch (err) {
+        microBadge.textContent = "Micro : bloqué";
+        showMessage("Le navigateur refuse le micro. Vérifie l’autorisation micro du site.", true);
       }
     }
 
-    function stopper() {
-      if (!reconnaissance || !enEcoute) return;
+    function stopListening() {
+      if (!recognition || !listening) return;
 
       try {
-        reconnaissance.stop();
+        recognition.stop();
       } catch (e) {
-        enEcoute = false;
-        arreterTimers();
-        corriger();
+        listening = false;
+        stopTimers();
+        checkAnswer();
       }
     }
 
-    function corriger() {
-      const attendu = couleurs[index].nom;
-      const correct = verifier(attendu, alternatives);
+    function checkAnswer() {
+      const card = cards[index];
+      const expected = card.word;
+      const recognized = transcripts[0] || "";
+      const correct = isCorrect(card, transcripts);
 
       if (correct) {
-        points++;
-        mettreAJourScore();
+        score++;
+        scoreBadge.textContent = "Score : " + score;
 
-        bulleResultat.className = "bulle bon";
-        bulleResultat.innerHTML =
+        resultBubble.className = "bulle bon";
+        resultBubble.innerHTML =
           "<strong>Résultat</strong>✅ Validé : le navigateur a reconnu <strong>" +
-          attendu +
+          escapeHtml(expected) +
           "</strong>.";
       } else {
-        bulleResultat.className = "bulle mauvais";
-        bulleResultat.innerHTML =
-          "<strong>Résultat</strong>❌ Non validé.<br>Mot attendu : <strong>" +
-          attendu +
-          "</strong><br>Mot reconnu : <strong>" +
-          protegerHtml(dernierTexteReconnu || "rien compris") +
-          "</strong>";
+        resultBubble.className = "bulle mauvais";
+        resultBubble.innerHTML =
+          "<strong>Résultat</strong>❌ Non validé.<br>" +
+          "Mot attendu : <strong>" + escapeHtml(expected) + "</strong><br>" +
+          "Mot reconnu : <strong>" + escapeHtml(recognized || "rien compris") + "</strong>";
       }
 
-      btnParler.disabled = true;
-      btnStop.disabled = true;
-      micro.textContent = "Micro : arrêté";
-      message.textContent = "On passe à la couleur suivante...";
+      details.push({
+        order: index + 1,
+        expected: expected,
+        recognized: recognized || "",
+        correct: correct
+      });
 
-      setTimeout(function () {
+      speakBtn.disabled = true;
+      stopBtn.disabled = true;
+      microBadge.textContent = "Micro : arrêté";
+
+      showMessage("On passe à la carte suivante...", false);
+
+      setTimeout(() => {
         index++;
-        afficherCouleur();
+        showCurrentCard();
       }, 1800);
     }
 
-    function verifier(attendu, textes) {
-      const acceptes = variantesAcceptees[attendu] || [attendu];
+    function isCorrect(card, allTranscripts) {
+      const accepted = [card.word];
 
-      for (const texte of textes) {
-        const mots = normaliser(texte).split(/\s+/).filter(Boolean);
+      if (card.variants) {
+        String(card.variants)
+          .split(",")
+          .map(v => v.trim())
+          .filter(Boolean)
+          .forEach(v => accepted.push(v));
+      }
 
-        for (const variante of acceptes) {
-          if (mots.includes(normaliser(variante))) {
+      for (const transcript of allTranscripts) {
+        const normalizedTranscript = normalize(transcript);
+
+        for (const variant of accepted) {
+          const normalizedVariant = normalize(variant);
+
+          if (!normalizedVariant) continue;
+
+          if (normalizedTranscript === normalizedVariant) {
+            return true;
+          }
+
+          if (normalizedTranscript.includes(normalizedVariant)) {
             return true;
           }
         }
@@ -608,129 +697,188 @@
       return false;
     }
 
-    function normaliser(texte) {
-      return String(texte || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z\s]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
+    function finishActivity() {
+      startBtn.disabled = false;
+      speakBtn.disabled = true;
+      stopBtn.disabled = true;
+
+      progressBadge.textContent = "Carte : " + cards.length + " / " + cards.length;
+      microBadge.textContent = "Micro : arrêté";
+
+      imageZone.innerHTML = `<div class="placeholder">✓</div>`;
+
+      appBubble.innerHTML = "<strong>Voix de la Web App</strong>Activité terminée.";
+      studentBubble.innerHTML = "<strong>Voix de l’élève</strong>Bravo, tu es arrivé au bout.";
+
+      resultBubble.className = "bulle";
+      resultBubble.innerHTML =
+        "<strong>Résultat</strong>Score final : <strong>" +
+        score +
+        " / " +
+        cards.length +
+        "</strong>";
+
+      finalBox.style.display = "block";
+      finalBox.textContent = "Score final : " + score + " / " + cards.length;
+
+      saveResult();
     }
 
-    function demarrerCompteARebours() {
-      arreterTimersAffichageSeulement();
+    async function saveResult() {
+      try {
+        const studentCode = activity.mode === "evaluation"
+          ? studentCodeInput.value.trim()
+          : "";
 
-      secondes = 10;
-      micro.textContent = "Micro : " + secondes + " s";
+        const result = await callApi({
+          action: "saveResult",
+          id: activity.id,
+          title: activity.title,
+          mode: activity.mode,
+          studentCode: studentCode,
+          score: String(score),
+          total: String(cards.length),
+          detail: JSON.stringify(details)
+        });
 
-      timerAffichage = setInterval(function () {
-        secondes--;
-        micro.textContent = "Micro : " + secondes + " s";
+        if (result.ok) {
+          showMessage("Résultat enregistré.", false);
+        } else {
+          showMessage("Résultat non enregistré : " + (result.error || "erreur inconnue"), true);
+        }
 
-        if (secondes <= 0) {
-          arreterTimersAffichageSeulement();
+      } catch (err) {
+        showMessage("Résultat non enregistré : " + (err.message || err), true);
+      }
+    }
+
+    function resetActivity() {
+      speechSynthesis.cancel();
+
+      if (recognition && listening) {
+        try {
+          recognition.stop();
+        } catch (e) {}
+      }
+
+      stopTimers();
+
+      index = -1;
+      score = 0;
+      listening = false;
+      alreadyChecked = false;
+      transcripts = [];
+      details = [];
+
+      scoreBadge.textContent = "Score : 0";
+      progressBadge.textContent = "Carte : 0 / " + cards.length;
+      microBadge.textContent = "Micro : arrêté";
+
+      imageZone.innerHTML = `<div class="placeholder">?</div>`;
+
+      appBubble.className = "bulle";
+      appBubble.innerHTML = "<strong>Voix de la Web App</strong>Clique sur Démarrer.";
+
+      studentBubble.className = "bulle";
+      studentBubble.innerHTML = "<strong>Voix de l’élève</strong>La reconnaissance vocale apparaîtra ici.";
+
+      resultBubble.className = "bulle";
+      resultBubble.innerHTML = "<strong>Résultat</strong>En attente.";
+
+      finalBox.style.display = "none";
+
+      startBtn.disabled = false;
+      speakBtn.disabled = true;
+      stopBtn.disabled = true;
+
+      showMessage("Activité réinitialisée.", false);
+    }
+
+    function startCountdown() {
+      stopDisplayTimer();
+
+      remainingSeconds = Number(activity.duration || 10);
+      microBadge.textContent = "Micro : " + remainingSeconds + " s";
+
+      timerDisplay = setInterval(() => {
+        remainingSeconds--;
+        microBadge.textContent = "Micro : " + remainingSeconds + " s";
+
+        if (remainingSeconds <= 0) {
+          stopDisplayTimer();
         }
       }, 1000);
     }
 
-    function arreterTimers() {
+    function stopTimers() {
       if (timerStop) {
         clearTimeout(timerStop);
         timerStop = null;
       }
 
-      arreterTimersAffichageSeulement();
+      stopDisplayTimer();
     }
 
-    function arreterTimersAffichageSeulement() {
-      if (timerAffichage) {
-        clearInterval(timerAffichage);
-        timerAffichage = null;
+    function stopDisplayTimer() {
+      if (timerDisplay) {
+        clearInterval(timerDisplay);
+        timerDisplay = null;
       }
     }
 
-    function mettreAJourScore() {
-      score.textContent = "Score : " + points;
+    function callApi(params) {
+      return new Promise((resolve, reject) => {
+        const callbackName =
+          "jsonp_" +
+          Date.now() +
+          "_" +
+          Math.random().toString(36).slice(2);
+
+        params.callback = callbackName;
+
+        const query = new URLSearchParams(params).toString();
+        const script = document.createElement("script");
+
+        window[callbackName] = data => {
+          resolve(data);
+          cleanup();
+        };
+
+        script.onerror = () => {
+          reject(new Error("Impossible de contacter l’API Apps Script."));
+          cleanup();
+        };
+
+        function cleanup() {
+          delete window[callbackName];
+          if (script.parentNode) {
+            script.parentNode.removeChild(script);
+          }
+        }
+
+        script.src = API_URL + "?" + query;
+        document.body.appendChild(script);
+      });
     }
 
-    function terminer() {
-      carre.style.background = "#e5e7eb";
-      carre.textContent = "Terminé";
-      carre.classList.remove("white");
-
-      progression.textContent = "Couleur : " + couleurs.length + " / " + couleurs.length;
-      micro.textContent = "Micro : arrêté";
-      message.textContent = "";
-
-      btnDemarrer.disabled = false;
-      btnParler.disabled = true;
-      btnStop.disabled = true;
-
-      bulleApp.innerHTML = "<strong>Voix de la Web App</strong>Activité terminée.";
-      bulleEleve.innerHTML = "<strong>Voix de l’élève</strong>Bravo, tu es arrivé au bout.";
-      bulleResultat.className = "bulle";
-      bulleResultat.innerHTML =
-        "<strong>Résultat</strong>Score final : <strong>" +
-        points +
-        " / " +
-        couleurs.length +
-        "</strong>";
-
-      final.style.display = "block";
-      final.textContent = "Score final : " + points + " / " + couleurs.length;
+    function normalize(text) {
+      return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-ZÀ-ÿñÑçÇßäöüÄÖÜ\s']/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
-    function reset() {
-      speechSynthesis.cancel();
-
-      if (reconnaissance && enEcoute) {
-        try {
-          reconnaissance.stop();
-        } catch (e) {}
-      }
-
-      arreterTimers();
-
-      index = -1;
-      points = 0;
-      enEcoute = false;
-      dejaCorrige = false;
-      dernierTexteReconnu = "";
-      alternatives = [];
-
-      progression.textContent = "Couleur : 0 / 10";
-      score.textContent = "Score : 0";
-      micro.textContent = "Micro : arrêté";
-
-      carre.style.background = "#e5e7eb";
-      carre.textContent = "Prêt ?";
-      carre.classList.remove("white");
-
-      bulleApp.className = "bulle";
-      bulleApp.innerHTML = "<strong>Voix de la Web App</strong>Clique sur “Démarrer”.";
-
-      bulleEleve.className = "bulle";
-      bulleEleve.innerHTML = "<strong>Voix de l’élève</strong>La reconnaissance vocale apparaîtra ici.";
-
-      bulleResultat.className = "bulle";
-      bulleResultat.innerHTML = "<strong>Résultat</strong>En attente.";
-
-      message.textContent = "";
-      final.style.display = "none";
-
-      btnDemarrer.disabled = false;
-      btnParler.disabled = true;
-      btnStop.disabled = true;
+    function showMessage(text, isError) {
+      messageBox.style.display = "block";
+      messageBox.textContent = text;
+      messageBox.className = isError ? "message erreur" : "message";
     }
 
-    function afficherAlerte(texte) {
-      alerte.style.display = "block";
-      alerte.textContent = texte;
-    }
-
-    function protegerHtml(texte) {
-      return String(texte)
+    function escapeHtml(text) {
+      return String(text ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
